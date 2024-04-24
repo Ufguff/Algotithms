@@ -7,35 +7,46 @@ template<typename T>
 class Queue{
     private:
         vector<T> queue;
-        int _size, _curr, _front, _back;
+        int _size, _front, _back, _maxsize;
 
     public:
-        Queue(){ 
-            _curr = 0;
-            _size = 1;
-            queue.resize(_size);
-        }
-
+        Queue() : queue(2), _size(0), _maxsize(2), _back(0), _front(0) {}
+        
         int size() {return _size;}
 
         bool empty()
         {return (_size == 0);}
 
         void push(T obj){
-            if (_curr + 1 == _size){
-                _size *= 2;
-                queue.resize(_size);
+            if (_maxsize == _size){
+                _maxsize *= 2;
+                queue.resize(_maxsize);
+                if (_front != 0)
+                {
+                    for (int i = _front; i < _size; i++)
+                        queue[_size + i] = queue[i];
+                    _front += _size;
+                }
             }
+
+            if (_back >= _maxsize)
+                _back = 0;
                 
-            queue[_curr] = obj;
+            queue[_back++] = obj;
+            _size++;
         }
 
         void pop(){
-            _curr++;
+            if (_size == 0) return;
+            _front++;
+            if (_front >= _maxsize)
+                _front = 0;
+            _size--;
+
         }
         
         T front(){
-            return queue[_curr];
+            return queue[_front];
         }
 /*
         void print()
@@ -49,7 +60,7 @@ class Queue{
 int main()
 {
     Queue<int> q;
-    for (int i = 1; i <= 40; i++)
+    for (int i = 1; i <= 10; i++)
     {
         for (int j = 1; j <= i; j++)
             q.push(j);
