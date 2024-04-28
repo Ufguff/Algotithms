@@ -6,15 +6,16 @@ struct node { int value; node *left, *right; };
 К каждому значению, хранящемуся в дереве, функция применяет функцию, указанную в качестве аргумента:
 void inorder(node *n, void (*f)(int));
 */
-void multBy2(int* n) {(*n) *= 2;}
+int allSum = 0;
+void multBy2(int n) { allSum += n;}
 
 struct node { int value; node *left, *right; };
 
-void inorder(node *n, void (*op)(int*))
+void inorder(node *n, void (*op)(int))
 {
     if (n != nullptr)
     {
-        op(&n->value);
+        op(n->value);
         inorder(n->left, op);
         cout << n->value << endl;
         inorder(n->right, op);
@@ -38,5 +39,6 @@ int main()
     n1->right = n3;
 
     inorder(root, multBy2);
+    cout << "sum of tree - " << allSum << endl;
     return 0;
 }
