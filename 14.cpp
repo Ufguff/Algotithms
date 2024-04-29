@@ -15,9 +15,6 @@ int main()
          q.push(x);
       }
    };
-   
-   
-   
    while(!q.empty())
    {
       int k = q.front();
