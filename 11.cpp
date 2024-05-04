@@ -17,55 +17,29 @@ class SparseMatrix
 public:
     SparseMatrix(int n, int m): n(n), m(m) {}
 
-    double get(int i, int j)    // exception ???
+    double get(int i, int j)    // exception
     {
         if (!(i < 0 && j < 0) && i < n && j < m)
             return matrix[make_pair(i, j)];
-        /*
+        
         else
-            throw exception("not valid coor");
-        */
+            throw "Not valid coordinate for getting!";
+        
 
     }
 
-    void set(int i, int j, double v)    // exception ???
+    void set(int i, int j, double v)    // exception
     {
         if (!(i < 0 && j < 0) && i < n && j < m)
             matrix[make_pair(i, j)] = v;
-        /*
         else
-            throw exception("not valid coor");
-        */
+            throw "Not valid coordinate for setting!";
     }
-// K1 - кол-во ненулевых в первой матрице
-// K2 - кол-во ненулевых во второй матрице
-    SparseMatrix operator+(SparseMatrix a)  // эффективность K1 + K2
-    {
-        if (a.n == n && a.m == m)
-        {
-            SparseMatrix result(n, m);
-            for (auto& [pair, v] : matrix)
-                result.matrix[make_pair(pair.first, pair.second)] += v;
+    // K1 - кол-во ненулевых в первой матрице
+    // K2 - кол-во ненулевых во второй матрице
+    //SparseMatrix operator+(SparseMatrix a); эффективность оператора + -- K1 + K2
 
-            for (auto& [pair, v] : a.matrix)
-                result.matrix[make_pair(pair.first, pair.second)] += v;
-
-            return result;
-        }
-    }
-
-    SparseMatrix operator*(SparseMatrix a)
-    {
-        if (m == a.n)
-        {
-            SparseMatrix result(n, a.m);
-            for(int i = 0; i < n; i++)
-            {
-                
-
-            } 
-        }
-    }
+    // SparseMatrix operator*(SparseMatrix a); эффективность оператора * -- K1*K2
 
     //debug
     void Print()
@@ -83,21 +57,38 @@ int main()
     for (int i = 0; i < n; i++)
         mat.set(i, 0, i + 1);
 
+    cout << "Вывод" << endl;
     mat.Print();
 
+    cout << "Получения элемента - ";
     cout << mat.get(0, 1) << endl;
-    //cout << mat.get(10, 10) << endl;
+
+    cout << "Проверка исключений" << endl;
+    try
+    {
+        cout << mat.get(10, 10) << endl;
+    }
+    catch(const char* e)
+    {
+        std::cerr << e << '\n';
+    }
+
+    try
+    {
+        mat.set(10, 10, 100);
+    }
+    catch(const char* e)
+    {
+        std::cerr << e << '\n';
+    }
 
     SparseMatrix mat2(n, m);
 
     for (int i = 0; i < m; i++)
         mat2.set(0, i, i + 1);
+
+    cout << "Вывод" << endl;
     mat2.Print();
-    cout << "-----------------------" << endl;
 
-
-    SparseMatrix resSum = mat + mat2;
-
-    resSum.Print();
     return 0;
 }
