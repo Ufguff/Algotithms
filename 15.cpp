@@ -1,24 +1,30 @@
-#include<deque>
 #include <vector>
+#include <functional>
+using namespace std;
 
-bool check(vector<vector<int>> &graph)
+bool checkCycle(vector<vector<int>> &graph)
 {
-    vector<bool> visited(graph.size());
-    deque<int> q;
-    for (int i = 0; i < graph.size(); i++)
+    function<bool(int, vector<vector<int>>&, vector<int>&)> help = [&help](int i, vector<vector<int>> &graph, vector<int> &visited)
     {
-        if (!visited[i])
-        {
-            q.push_back(i);
-            while (q.size())
-            {
-                int p = q.front();  q.pop_front();
-                if (visited[p]) return false;
-                visited[p] = true;
-                for (int j = 0; j < graph[p].size(); j++)
-                    q.push_back(graph[p][j]);
-            }
+        if (visited[i] == 1)
+            return true;
+        visited[i] = 1;
+        for (int j = 0; j < graph[i].size(); j++){
+            bool flag = help(i, graph, visited);
+            if (flag)
+            return true;
         }
-    }
+        visited[i] = 2;
+        return false;
+    };
+    vector<int> visited(graph.size());
+    for (int i = 0; i < visited.size(); i++)
+        if (visited[i] != 2)
+        {
+            bool flag = help(i, graph, visited);
+            if (flag)
+                return true;
+        }
     return false;
 }
+

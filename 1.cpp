@@ -48,13 +48,6 @@ class Queue{
         T front(){
             return queue[_front];
         }
-/*
-        void print()
-        {
-            for (auto it : queue) {cout << (it) << " "; it++;}
-            cout << endl;
-        }
-*/
 };
 
 int main()

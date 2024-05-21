@@ -1,0 +1,28 @@
+#
+!main.cpp algorithm array assert.h cassert cctype cerrno clocale cstdint cstdio cstdlib ctype.h cwchar cwctype errno.h exception functional initializer_list ios iosfwd iostream istream limits limits.h locale.h new optional ostream signal.h stddef.h stdexcept stdint.h stdio.h stdlib.h streambuf string string_view system_error tuple type_traits typeinfo unordered_map utility vector wchar.h wctype.h #<#>
+MOD : const unsigned long long #<main.cpp>
+Op _type_ #<main.cpp>
+STreap _type_ #<main.cpp>
+main() -> int #<main.cpp>
+	Op::op : int #<main.cpp>
+	Op::a : long long #<main.cpp>
+	Op=:operator()(long long v, long long h) -> long long #<main.cpp>
+	STreap:%f : func #<main.cpp>
+	STreap:%root : node* #<main.cpp>
+	STreap:%operator=(const STreap&) -> STreap& #<main.cpp>
+	STreap:%insert(size_t k, T v) -> void #<main.cpp>
+	STreap:%erase(size_t k) -> void #<main.cpp>
+	STreap:%calc(size_t i, size_t j) -> State #<main.cpp>
+	STreap:%apply(size_t i, size_t j, Operation op) -> void #<main.cpp>
+	STreap$%node _type_ #<main.cpp>
+	STreap$%size : size_t #<main.cpp>
+	STreap=%size() -> size_t #<main.cpp>
+	STreap:node::v : T #<main.cpp>
+	STreap:node::k : size_t #<main.cpp>
+	STreap:node::y : int #<main.cpp>
+	STreap:node::s : State #<main.cpp>
+	STreap:node::op : optional #<main.cpp>
+	STreap:node::left : node* #<main.cpp>
+	STreap:node::nullptr : node* right= #<main.cpp>
+	STreap:node::node(T v) #<main.cpp>
+	STreap:node::update(func f) -> void #<main.cpp>

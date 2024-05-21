@@ -15,9 +15,8 @@ void inorder(node *n, void (*op)(int))
 {
     if (n != nullptr)
     {
-        op(n->value);
         inorder(n->left, op);
-        cout << n->value << endl;
+        op(n->value);
         inorder(n->right, op);
     }
 }

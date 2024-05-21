@@ -1,0 +1,17 @@
+#
+!main.cpp array cctype cerrno clocale cstdint cstdio cstdlib ctype.h cwchar cwctype errno.h exception functional initializer_list ios iosfwd iostream istream limits limits.h locale.h new optional ostream signal.h stddef.h stdexcept stdint.h stdio.h stdlib.h streambuf string string_view system_error tuple type_traits typeinfo unordered_map utility vector wchar.h wctype.h #<#>
+ITreap _type_ #<main.cpp>
+Print : void #<main.cpp>
+	ITreap:%root : node* #<main.cpp>
+	ITreap:%size : size_t #<main.cpp>
+	ITreap:%operator=(const ITreap&) -> ITreap& #<main.cpp>
+	ITreap:%spliti : pair #<main.cpp>
+	ITreap$%node _type_ #<main.cpp>
+	ITreap=%size() -> size_t #<main.cpp>
+	ITreap:node::v : T #<main.cpp>
+	ITreap:node::k : size_t #<main.cpp>
+	ITreap:node::y : int #<main.cpp>
+	ITreap:node::left : node* #<main.cpp>
+	ITreap:node::nullptr : node* right= #<main.cpp>
+	ITreap:node::node(T v) #<main.cpp>
+	ITreap:node::update() -> void #<main.cpp>

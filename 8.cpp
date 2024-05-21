@@ -1,68 +1,47 @@
 #include <iostream>
 #include <map>
-#include <list>
+#include <vector>
 using namespace std;
-
-//Используя map из STL решите следующую задачу.
-//Имеется список, первоначально пустой. Команда add v добавляет v в конец списка. Команда remove v удаляет первое вхождение v
-//из списка. После каждой команды вывести "1", если в списке нет одинаковых элементов, или "2", если есть одинаковые.
-template<typename T>
-void check(list<T>& l)
-{
-    map<T, int> dict;
-
-    for (auto iter = l.begin(); iter != l.end(); iter++)
-    {
-        if (dict.count(*iter))
-            {std::cout << '2' << std::endl; return;}
-        else
-            dict[*iter]++;
-    }
-    std::cout << '1' << std::endl;
-}
-
-template<typename T>
-void add(list<T>& l, T value)
-{
-    l.push_back(value);
-    check(l);
-}
-
-template<typename T>
-void remove(list<T>& l, T value)
-{
-    for (auto iter = l.begin(); iter != l.end(); iter++)
-    {
-        if (*iter == value)
-        {
-            l.erase(iter);
-            break;
-        }
-    }
-    check(l);   
-}
 
 int main()
 {
-    list<int> lis;
+    int n, v;
+    string command;
+    cin >> n;
 
-    add(lis, 10);   //1
-    add(lis, 20);   //1
-    add(lis, 10);   //1
-    add(lis, 40);   //2
-    add(lis, 50);   //2
+    map<int, int> dict;
+    vector<int> vect;
 
-    remove(lis, 10);    //1
-    add(lis, 100);  //1
-    add(lis, 100);  //2
-    remove(lis, 100);   //1
-    remove(lis, 100);    //1
-    
-    for (auto iter = lis.begin(); iter != lis.end(); iter++)
+    for (int i = 0; i < nl i++)
     {
-        cout << *iter << endl;
+        cin >> command >> v;
+        switch (command)
+        {
+        case "add":
+            vect.push_back(v);
+            dict[v]++;
+            break;
+        
+        case "remove":
+            auto iterator = find(vect.begin(), vect.end(), v);
+            if (iterator != vect.end() && dict[v] > 0)
+            {
+                vect.erase(v);
+                dict[v]--;
+            }
+            break;
+        }
+        
+        bool flag = false;
+        for (auto& pair : dict)
+        {
+            if (pair.second > 1)
+            {   flag = true; break; }
+        }
+        
+        if (flag)
+            cout << "2" << endl;
+        else
+            cout << "1" << endl;
     }
-
-
-    return 0;
 }
